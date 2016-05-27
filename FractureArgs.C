@@ -20,12 +20,14 @@ FractureArgs::FractureArgs () : SIMargsBase("fracturedynamics")
 {
   inpfile = nullptr;
   integrator = coupling = 1;
-  poroEl = false;
+  poroEl = expPhase = false;
 }
 
 
 bool FractureArgs::parseArg (const char* argv)
 {
+  if (!strcmp(argv,"-explcrack"))
+    expPhase = true;
   if (!strcmp(argv,"-nocrack"))
     coupling = 0;
   else if (!strcmp(argv,"-semiimplicit"))
@@ -83,6 +85,8 @@ bool FractureArgs::parse (const TiXmlElement* elem)
         integrator = 4;
       else if (!strcasecmp(child->Value(),"poroelastic"))
         poroEl = true;
+      else if (!strcasecmp(child->Value(),"explicitphase"))
+        expPhase = true;
   }
 
   return this->SIMargsBase::parse(elem);
