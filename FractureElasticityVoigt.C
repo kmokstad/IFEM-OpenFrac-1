@@ -312,20 +312,37 @@ bool FractureElasticityVoigt::evalInt (LocalIntegral& elmInt,
   if (eM) // Integrate the mass matrix
     this->formMassMatrix(elMat.A[eM-1],fe.N,X,fe.detJxW);
 
-  if (iS && lHaveStrains)
-  {
-    // Integrate the internal forces
-    sigma *= -fe.detJxW;
-    if (!Bmat.multiply(sigma,elMat.b[iS-1],true,true)) // ES -= B^T*sigma
-      return false;
-  }
-
   if (eS)
   {
     // Integrate the load vector due to gravitation and other body forces
     this->formBodyForce(elMat.b[eS-1],fe.N,X,fe.detJxW);
     // Integrate the load vector due to internal crack pressure
     this->formCrackForce(elMat.b[eS-1],elMat.vec,fe,X);
+  }
+
+  if (!lHaveStrains)
+    return true;
+
+  Vector BtSig;
+  sigma *= -fe.detJxW;
+  if (eKc && !Bmat.multiply(sigma,BtSig,true)) // BtSig = -B^T*sigma
+    return false;
+
+  if (iS)
+  {
+    // Integrate the internal forces
+    if (eKc)
+      elMat.b[iS-1].add(BtSig); // ES += BtSig
+    else if (!Bmat.multiply(sigma,elMat.b[iS-1],true,true)) // ES -= B^T*sigma
+      return false;
+  }
+
+  if (eKc)
+  {
+    // Integrate the coupling matrix between displacement and phase-field DOFs
+    BtSig *= -this->getStressDegradation(fe.N,elmInt.vec,1); // g'(c)
+    if (!elMat.A[eKc-1].outer_product(BtSig,fe.N,true)) // Kc += B^T*sigma*N*dGc
+      return false;
   }
 
   return true;

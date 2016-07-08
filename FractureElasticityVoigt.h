@@ -29,15 +29,17 @@ class FractureElasticityVoigt : public FractureElasticity
 public:
   //! \brief The constructor invokes the parent class constructor only.
   //! \param[in] n Number of spatial dimensions
-  FractureElasticityVoigt(unsigned short int n) : FractureElasticity(n) {}
+  FractureElasticityVoigt(unsigned short int n)
+    : FractureElasticity(n), eKc(0) {}
   //! \brief Constructor for integrands with a parent integrand.
   //! \param parent The parent integrand of this one
   //! \param[in] n Number of spatial dimensions
   FractureElasticityVoigt(IntegrandBase* parent, unsigned short int n)
-    : FractureElasticity(parent,n) {}
+    : FractureElasticity(parent,n), eKc(0) {}
   //! \brief Empty destructor.
   virtual ~FractureElasticityVoigt() {}
 
+  using FractureElasticity::evalInt;
   //! \brief Evaluates the integrand at an interior point.
   //! \param elmInt The local integral object to receive the contributions
   //! \param[in] fe Finite element data of current integration point
@@ -63,6 +65,8 @@ protected:
                   SymmTensor* sigma, Matrix* dSdE,
                   bool postProc = false, bool printElm = false) const;
 
+  unsigned short int eKc; //!< Zero-based index to element coupling matrix
+
   friend class FractureElasticNorm;
 };
 
@@ -80,6 +84,7 @@ public:
   //! \brief Empty destructor.
   virtual ~FractureElasticNorm() {}
 
+  using ElasticityNorm::evalInt;
   //! \brief Evaluates the integrand at an interior point.
   //! \param elmInt The local integral object to receive the contributions
   //! \param[in] fe Finite element data of current integration point
