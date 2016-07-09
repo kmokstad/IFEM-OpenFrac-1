@@ -131,8 +131,6 @@ protected:
                       const FiniteElement& fe, const Vec3& X) const;
 
 private:
-  unsigned short int eC; //!< Zero-based index to element phase field vector
-
   RealFunc* crackP; //!< Applied pressure in the crack
 
   double alpha;  //!< Relaxation factor for the crack phase field
@@ -142,6 +140,8 @@ protected:
   double sigmaC; //!< Critical fracture tensile stress
   double zeta;   //!< Slope parameter for the driving crack force
   bool noSplit;  //!< If \e true, no strain energy split, just isotropic scaling
+
+  unsigned short int eC; //!< Zero-based index to element phase field vector
 
   mutable RealArray myPhi; //!< Tensile energy density at integration points
   Vectors&          mySol; //!< Primary solution vectors for current patch
