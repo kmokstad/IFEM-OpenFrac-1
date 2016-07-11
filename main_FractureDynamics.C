@@ -134,8 +134,9 @@ int runCombined (char* infile, const char* context)
       !phaseSim.initSystem(phaseSim.opt.solver,1,1,false))
     return 2;
 
-  // Time-step loop
-  frac.init(TimeStep());
+  // Initialize the solution
+  if (!frac.init(TimeStep()))
+    return 2;
 
   DataExporter* exporter = nullptr;
   if (elastoSim.opt.dumpHDF5(infile))
@@ -143,6 +144,7 @@ int runCombined (char* infile, const char* context)
 
   frac.setupDependencies();
 
+  // Time-step loop
   int res = solver.solveProblem(infile,exporter,"100. Starting the simulation",
                                 phaseSim.getInitRefine() < 1);
 
@@ -181,10 +183,11 @@ int runSimulator3 (const FDargs& args)
   \brief Creates and launches a stand-alone elasticity simulator (no coupling).
   \param[in] infile The input file to parse
   \param[in] context Input-file context for the time integrator
+  \param[in] monolithic If \e true, use monolithic coupling to phase-field
 */
 
 template<class Dim, class Integrator=NewmarkSIM>
-int runStandAlone (char* infile, const char* context)
+int runStandAlone (char* infile, const char* context, bool monolithic = false)
 {
   typedef SIMDynElasticity<Dim,Integrator> SIMElastoDynamics;
 
@@ -192,7 +195,7 @@ int runStandAlone (char* infile, const char* context)
   IFEM::cout <<"\n\n0. Parsing input file(s)."
              <<"\n========================="<< std::endl;
 
-  SIMElastoDynamics elastoSim;
+  SIMElastoDynamics elastoSim(monolithic);
   if (!elastoSim.read(infile))
     return 1;
 
@@ -214,14 +217,16 @@ int runStandAlone (char* infile, const char* context)
   if (!elastoSim.initSystem(elastoSim.opt.solver))
     return 2;
 
-  // Time-step loop
-  elastoSim.init(TimeStep());
+  // Initialize the solution
+  if (!elastoSim.init(TimeStep()))
+    return 2;
 
   DataExporter* exporter = nullptr;
   if (elastoSim.opt.dumpHDF5(infile))
     exporter = SIM::handleDataOutput(elastoSim,solver,elastoSim.opt.hdf5,
                                      false,1,1);
 
+  // Time-step loop
   int res = solver.solveProblem(infile,exporter,"100. Starting the simulation");
 
   delete exporter;
@@ -255,6 +260,9 @@ int runSimulator1 (const FDargs& args)
     return runSimulator2<Dim,Integrator,SIMCoupled>(args);
   case 2:
     return runSimulator2<Dim,Integrator,SIMCoupledSI>(args);
+  case 3: // Monolithic coupling, single integrand
+    return runStandAlone<Dim,Integrator>(args.inpfile,
+                                         Integrator::inputContext,true);
   default: // No phase field coupling
     return runStandAlone<Dim,Integrator>(args.inpfile,Integrator::inputContext);
   }
@@ -324,6 +332,8 @@ int main (int argc, char** argv)
       args.coupling = 0;
     else if (!strcmp(argv[i],"-semiimplicit"))
       args.coupling = 2;
+    else if (!strcmp(argv[i],"-monolithic"))
+      args.coupling = 3;
     else if (!strcmp(argv[i],"-lstatic"))
       args.integrator = 0;
     else if (!strcmp(argv[i],"-GA"))
@@ -349,10 +359,11 @@ int main (int argc, char** argv)
   {
     std::cout <<"usage: "<< argv[0]
               <<" <inputfile> [-dense|-spr|-superlu[<nt>]|-samg|-petsc]\n"
-              <<"       [-lag|-spec|-LR] [-2D] [-nGauss <n>]\n       "
-              <<"[-nocrack|-semiimplicit] [-[l|q]static|-GA|-HHT] [-adaptive]\n"
+              <<"       [-lag|-spec|-LR] [-2D] [-nGauss <n>]\n"
+              <<"       [-nocrack|-semiimplicit|-monolithic]"
+              <<" [-[l|q]static|-GA|-HHT] [-adaptive]\n"
               <<"       [-vtf <format> [-nviz <nviz>] [-nu <nu>] [-nv <nv]"
-              <<" [-nw <nw>]] [-hdf5] [-principal]\n"<< std::endl;
+              <<" [-nw <nw>]]\n       [-hdf5] [-principal]\n"<< std::endl;
     return 0;
   }
 

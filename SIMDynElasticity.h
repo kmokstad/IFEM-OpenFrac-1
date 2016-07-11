@@ -3,12 +3,11 @@
 //!
 //! \file SIMDynElasticity.h
 //!
-//! \date Jul 13 2015
+//! \date Dec 04 2015
 //!
-//! \author Arne Morten Kvarving / SINTEF
+//! \author Knut Morten Okstad / SINTEF
 //!
-//! \brief Wrapper equipping the elasticity solver with
-//! time-stepping support and phase field coupling.
+//! \brief Dynamic simulation driver for elasticity problems with fracture.
 //!
 //==============================================================================
 
@@ -18,12 +17,12 @@
 #include "NewmarkSIM.h"
 #include "SIMElasticity.h"
 #include "InitialConditionHandler.h"
-#include "FractureElasticityVoigt.h"
+#include "FractureElasticityMonol.h"
 #include "DataExporter.h"
 
 
 /*!
-  \brief Driver wrapping an elasticity solver with an ISolver interface.
+  \brief Driver class for dynamic elasticity problems with fracture.
 */
 
 template<class Dim, class DynSIM=NewmarkSIM>
@@ -31,10 +30,17 @@ class SIMDynElasticity : public SIMElasticity<Dim>
 {
 public:
   //! \brief Default constructor.
-  SIMDynElasticity() : dSim(*this)
+  SIMDynElasticity(bool monolithic = false) : dSim(*this)
   {
     Dim::myHeading = "Elasticity solver";
     vtfStep = subIter = 0;
+    if (monolithic)
+    {
+      ++Dim::nf[0]; // Account for the phase field as an unknown field variable
+      phOrder = 2;  // Default 2nd order phase field when monolithic coupling
+    }
+    else
+      phOrder = 0;
   }
 
   //! \brief Empty destructor.
@@ -118,7 +124,7 @@ public:
   //! \brief Computes the solution for the current time step.
   bool solveStep(TimeStep& tp)
   {
-    if (Dim::msgLevel >= 1)
+    if (Dim::msgLevel >= 1 && phOrder < 2)
       IFEM::cout <<"\n  Solving the elasto-dynamics problem...";
 
     if (dSim.solveStep(tp) != SIM::CONVERGED)
@@ -177,9 +183,9 @@ public:
   }
 
   //! \brief Returns the tensile energy in gauss points.
-  const RealArray* getTensileEnergy() const
+  virtual const RealArray* getTensileEnergy() const
   {
-    return static_cast<FractureElasticity*>(Dim::myProblem)->getTensileEnergy();
+    return static_cast<Elasticity*>(Dim::myProblem)->getTensileEnergy();
   }
 
   //! \brief Returns a const reference to the global norms.
@@ -228,8 +234,13 @@ protected:
   //! \brief Returns the actual integrand.
   virtual Elasticity* getIntegrand()
   {
-    if (!Dim::myProblem) // Using the Voigt formulation by default
-      Dim::myProblem = new FractureElasticityVoigt(Dim::dimension);
+    if (!Dim::myProblem)
+    {
+      if (phOrder > 1)
+        Dim::myProblem = new FractureElasticityMonol(Dim::dimension,phOrder);
+      else // Using the Voigt elasticity formulation by default
+        Dim::myProblem = new FractureElasticityVoigt(Dim::dimension);
+    }
     return static_cast<Elasticity*>(Dim::myProblem);
   }
 
@@ -240,11 +251,21 @@ protected:
     static short int ncall = 0;
     if (++ncall == 1) // Avoiding infinite recursive calls
       result = dSim.parse(elem);
+    else if (!strcasecmp(elem->Value(),"cahnhilliard") && phOrder > 1)
+    {
+      utl::getAttribute(elem,"order",phOrder);
+      const TiXmlElement* child = elem->FirstChildElement();
+      for (; child; child = child->NextSiblingElement())
+        this->getIntegrand()->parse(child);
+    }
     else if (!strcasecmp(elem->Value(),"elasticity") && !Dim::myProblem)
     {
-      std::string form("voigt");
-      if (utl::getAttribute(elem,"formulation",form,true) && form != "voigt")
-        Dim::myProblem = new FractureElasticity(Dim::dimension);
+      if (phOrder < 2)
+      {
+        std::string form("voigt");
+        if (utl::getAttribute(elem,"formulation",form,true) && form != "voigt")
+          Dim::myProblem = new FractureElasticity(Dim::dimension);
+      }
       result = this->SIMElasticity<Dim>::parse(elem);
     }
     else
@@ -260,6 +281,7 @@ private:
   Vector gNorm;   //!< Global norm values
   int    vtfStep; //!< VTF file step counter
   int    subIter; //!< Sub-iteration type flag
+  int    phOrder; //!< Phase-field order for monolithic coupling
 };
 
 #endif
