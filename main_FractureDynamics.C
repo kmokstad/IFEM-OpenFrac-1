@@ -23,7 +23,7 @@
 #include "HHTSIM.h"
 #include "GenAlphaSIM.h"
 #include "NewmarkNLSIM.h"
-#include "NonLinSIM.h"
+#include "QuasiStaticSIM.h"
 #include "ASMstruct.h"
 #include "AppCommon.h"
 
@@ -298,7 +298,10 @@ int runSimulator (const FDargs& args)
   case 2:
     return runSimulator1<Dim,GenAlphaSIM>(args);
   case 3:
-    return runSimulator1<Dim,NonLinSIM>(args);
+    if (args.coupling == 3)
+      return runSimulator1<Dim,QuasiStaticSIM>(args);
+    else
+      return runSimulator1<Dim,NonLinSIM>(args);
   case 4:
     return runSimulator1<Dim,HHTSIM>(args);
   case 5:
