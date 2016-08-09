@@ -31,9 +31,10 @@ class SIMDynElasticity : public SIMElasticity<Dim>
 {
 public:
   //! \brief Default constructor.
-  SIMDynElasticity() : SIMElasticity<Dim>(false), dSim(*this), vtfStep(0)
+  SIMDynElasticity() : dSim(*this)
   {
     Dim::myHeading = "Elasticity solver";
+    vtfStep = subIter = 0;
   }
 
   //! \brief Empty destructor.
@@ -184,6 +185,12 @@ public:
   //! \brief Returns a const reference to the global norms.
   const Vector& getGlobalNorms() const { return gNorm; }
 
+  //! \brief Parses sub-iteration parameters from an XML element.
+  void parseSubiteration(const TiXmlElement* elem)
+  {
+    utl::getAttribute(elem,"type",subIter);
+  }
+
   //! \brief Dummy method.
   void setEnergyFile(const std::string&) {}
 
@@ -204,7 +211,7 @@ public:
   //! \param[in] tp Time stepping parameters
   SIM::ConvStatus solveIteration(TimeStep& tp)
   {
-    return dSim.solveIteration(tp);
+    return subIter == 1 ? dSim.solveStep(tp) : dSim.solveIteration(tp);
   }
 
   //! \brief Returns the maximum number of iterations.
@@ -252,6 +259,7 @@ private:
   Matrix eNorm;   //!< Element norm values
   Vector gNorm;   //!< Global norm values
   int    vtfStep; //!< VTF file step counter
+  int    subIter; //!< Sub-iteration type flag
 };
 
 #endif
