@@ -10,7 +10,7 @@
 //!
 //==============================================================================
 
-#include "CubicMinimum.h"
+#include "HermiteInterpolator.h"
 
 #include "gtest/gtest.h"
 
@@ -33,6 +33,19 @@ class QuadraticFunction {
 public:
   static double value(double x) { return (x+0.25)*(x+0.75); }
   static double tangent(double x) { return x+x+1.0; }
+};
+
+
+class CubicMinimum {
+public:
+  static bool Find(double& alpha,
+                   const std::vector<double>& params,
+                   const std::vector<double>& vals,
+                   const std::vector<double>& tgts)
+  {
+    HermiteInterpolator h(params,vals,tgts);
+    return h.findMinimum(alpha);
+  }
 };
 
 

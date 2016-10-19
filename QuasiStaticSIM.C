@@ -12,7 +12,7 @@
 //==============================================================================
 
 #include "QuasiStaticSIM.h"
-#include "CubicMinimum.h"
+#include "HermiteInterpolator.h"
 #include "SIMoutput.h"
 #include "TimeStep.h"
 #include "IFEM.h"
@@ -102,6 +102,6 @@ bool QuasiStaticSIM::lineSearch (TimeStep& param)
             std::ostream_iterator<double>(std::cout," "));
   std::cout << std::endl;
 #endif
-
-  return CubicMinimum::Find(alpha,params,values,derivs);
+  HermiteInterpolator h(params,values,derivs);
+  return h.findMinimum(alpha);
 }
