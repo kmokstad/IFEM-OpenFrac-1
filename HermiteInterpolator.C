@@ -13,6 +13,7 @@
 
 #include "HermiteInterpolator.h"
 #include "IFEM.h"
+#include <fstream>
 
 
 double HermiteInterpolator::evaluate (double x, int derOrder) const
@@ -41,20 +42,34 @@ double HermiteInterpolator::evaluate (double x, int derOrder) const
 
 bool HermiteInterpolator::findMinimum (double& x) const
 {
-  const double epsTol = 1.0e-6;
+  const double absTol = 1.0e-20;
+  const double relTol = 1.0e-12;
   const double epsZero = 1.0e-10;
+  const int maxIts = 20;
 
 #ifdef SP_DEBUG
   std::cout <<"\nHermiteInterpolator::findMinimum:";
 #endif
 
+  std::ofstream of("val.asc");
+  for (size_t i = 0; i < 100; ++i)
+    of << this->evaluate(grid.front() + (grid.back()-grid.front())/99*i) << " ";
+  of.close();
+  std::ofstream of2("der.asc");
+  for (size_t i = 0; i < 100; ++i)
+    of2 << this->evaluateDeriv(grid.front() + (grid.back()-grid.front())/99*i) <<  " ";
+  of2.close();
+
   // Newton loop to find zeros
   std::vector<double> extrema;
-  for (size_t pidx = 0; pidx < grid.size(); pidx += grid.size()-1)
+  for (size_t pidx = 0; pidx < grid.size(); ++pidx)
   {
     x = grid[pidx];
     double dx = 1.0;
-    while (dx > epsTol || dx < -epsTol)
+    size_t its = 0;
+    std::cout << "newton loop for grid point " << pidx <<":";
+    while ((dx/x > relTol || dx/x < -relTol) &&
+           (dx > absTol || dx < -absTol) && its < 100)
     {
       double I  = this->evaluateDeriv(x);
       double I2 = this->evaluateDeriv2(x);
@@ -62,20 +77,34 @@ bool HermiteInterpolator::findMinimum (double& x) const
         return false; // breakdown - probably a linear function
       dx = I / I2;
       x -= dx;
+      std::cout << "\n\t" << dx << std::endl;
+      ++its;
     }
+    if (its >= maxIts)
+      continue;
 
 #ifdef SP_DEBUG
     std::cout <<" f("<< x <<") = "<< this->evaluate(x);
 #endif
     if (x >= grid.front() && x <= grid.back() && this->evaluateDeriv2(x) > 0.0)
-    {
-      // For now accept the found value. There may be multiple solutions,
-      // but not sure how to find all roots reliably.
-#ifndef SP_DEBUG
-      IFEM::cout <<" alpha^* = "<< x << std::endl;
-#endif
-      return true;
+      extrema.push_back(x);
+  }
+
+  if (!extrema.empty()) {
+    double val = 1e100;
+    for (double& it : extrema) {
+      double val2 = this->evaluate(it);
+      if (val2 < val) {
+        x = it;
+        val = val2;
+      }
     }
+
+#ifndef SP_DEBUG
+    IFEM::cout <<" alpha^* = "<< x << std::endl;
+#endif
+
+    return true;
   }
 
   IFEM::cout <<"\n\t*** No energy minimum found in [u";
