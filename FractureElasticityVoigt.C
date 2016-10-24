@@ -76,6 +76,11 @@ bool FractureElasticityVoigt::evalStress (double lambda, double mu, double Gc,
       return false;
   }
 
+  if (printElm) {
+    for (auto& it : M)
+      std::cout << "m is " << it << std::endl;
+  }
+
   // Split the strain tensor into positive and negative parts
   SymmTensor ePos(nsd), eNeg(nsd);
   for (a = 0; a < nsd; a++)
@@ -290,7 +295,7 @@ bool FractureElasticityVoigt::evalInt (LocalIntegral& elmInt,
 
       // Evaluate the stress state at this point, with degraded tensile part
       if (!this->evalStress(lambda,mu,Gc,eps,&myPhi[fe.iGP],&sigma,
-                            eKm ? &dSdE : nullptr))
+                            eKm ? &dSdE : nullptr, false, fe.iel==1||fe.iel==125))
 	return false;
     }
   }

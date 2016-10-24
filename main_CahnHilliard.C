@@ -105,5 +105,6 @@ int main (int argc, char** argv)
   else if (ndim == 2)
     return runSimulator<SIM2D>(infile);
   else
-    return runSimulator<SIM1D>(infile);
+    return 1;
+//    return runSimulator<SIM1D>(infile);
 }

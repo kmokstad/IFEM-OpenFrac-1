@@ -45,8 +45,8 @@ add_library(CommonFrac STATIC ${FracEl_SRCS})
 add_executable(CahnHilliard main_CahnHilliard.C)
 add_executable(FractureDynamics main_FractureDynamics.C)
 
-target_link_libraries(CahnHilliard CommonFrac Elasticity ${IFEM_LIBRARIES})
-target_link_libraries(FractureDynamics CommonFrac Elasticity ${IFEM_LIBRARIES})
+target_link_libraries(CahnHilliard CommonFrac Elasticity IFEMAppCommon ${IFEM_LIBRARIES})
+target_link_libraries(FractureDynamics CommonFrac Elasticity IFEMAppCommon ${IFEM_LIBRARIES})
 
 # Installation
 install(TARGETS CahnHilliard FractureDynamics DESTINATION bin)
@@ -79,7 +79,7 @@ list(APPEND TEST_APPS CahnHilliard FractureDynamics)
 IFEM_add_test_app(${PROJECT_SOURCE_DIR}/Test/*.C
                   ${PROJECT_SOURCE_DIR}/Test
                   FractureDynamics
-                  CommonFrac Elasticity ${IFEM_LIBRARIES})
+                  CommonFrac Elasticity IFEMAppCommon ${IFEM_LIBRARIES})
 
 if(IFEM_COMMON_APP_BUILD)
   set(TEST_APPS ${TEST_APPS} PARENT_SCOPE)

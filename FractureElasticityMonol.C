@@ -17,6 +17,7 @@
 #include "ElmNorm.h"
 #include "Utilities.h"
 #include "IFEM.h"
+#include "Vec3Oper.h"
 #include "tinyxml.h"
 
 
@@ -163,6 +164,11 @@ bool FractureElasticityMonol::evalInt (LocalIntegral& elmInt,
     return false;
   else if (!eAcc && !eBc)
     return true;
+
+  if (fe.iel == 1)
+    std::cout << "phi: " << myPhi[fe.iGP] << std::endl;
+  else if (fe.iel == 125)
+    std::cout << "yourphi: " << myPhi[fe.iGP] << std::endl;
 
   double C = fe.N.dot(elmInt.vec[eC]);
   double ddGc = this->getStressDegradation(fe.N,elmInt.vec,2);

@@ -14,6 +14,8 @@
 #include "HermiteInterpolator.h"
 #include "IFEM.h"
 #include <fstream>
+#include <sstream>
+#include <cmath>
 
 
 double HermiteInterpolator::evaluate (double x, int derOrder) const
@@ -42,58 +44,61 @@ double HermiteInterpolator::evaluate (double x, int derOrder) const
 
 bool HermiteInterpolator::findMinimum (double& x) const
 {
-  const double absTol = 1.0e-20;
-  const double relTol = 1.0e-12;
-  const double epsZero = 1.0e-10;
-  const int maxIts = 20;
-
 #ifdef SP_DEBUG
   std::cout <<"\nHermiteInterpolator::findMinimum:";
 #endif
 
-  std::ofstream of("val.asc");
-  for (size_t i = 0; i < 100; ++i)
-    of << this->evaluate(grid.front() + (grid.back()-grid.front())/99*i) << " ";
+  static int lsidx = 1;
+  std::stringstream str;
+  str << "val" << lsidx << ".asc";
+  const size_t samples = 200;
+  std::ofstream of(str.str());
+  for (size_t i = 0; i < samples; ++i)
+    of << this->evaluate(grid.front() + (grid.back()-grid.front())/(samples-1)*i) << " ";
   of.close();
-  std::ofstream of2("der.asc");
-  for (size_t i = 0; i < 100; ++i)
-    of2 << this->evaluateDeriv(grid.front() + (grid.back()-grid.front())/99*i) <<  " ";
+  str.str("");
+  str << "der" << lsidx << ".asc";
+  std::ofstream of2(str.str());
+  for (size_t i = 0; i < samples; ++i)
+    of2 << this->evaluateDeriv(grid.front() + (grid.back()-grid.front())/(samples-1)*i) <<  " ";
   of2.close();
 
-  // Newton loop to find zeros
+  // Loop to find zeros
   std::vector<double> extrema;
-  for (size_t pidx = 0; pidx < grid.size(); ++pidx)
-  {
-    x = grid[pidx];
-    double dx = 1.0;
-    size_t its = 0;
-    std::cout << "newton loop for grid point " << pidx <<":";
-    while ((dx/x > relTol || dx/x < -relTol) &&
-           (dx > absTol || dx < -absTol) && its < 100)
-    {
-      double I  = this->evaluateDeriv(x);
-      double I2 = this->evaluateDeriv2(x);
-      if (I2 < epsZero && I2 > -epsZero)
-        return false; // breakdown - probably a linear function
-      dx = I / I2;
-      x -= dx;
-      std::cout << "\n\t" << dx << std::endl;
-      ++its;
-    }
-    if (its >= maxIts)
+  for (size_t pidx = 0; pidx < grid.size()-1; ++pidx) {
+    double h  = grid[pidx+1] - grid[pidx];
+    double df = (values[pidx+1] - values[pidx]) / h;
+
+    double c2 = -(2.0*derivs[pidx] - 3.0*df + derivs[pidx+1]) / h;
+    double c3 =  (    derivs[pidx] - 2.0*df + derivs[pidx+1]) / (h*h);
+
+    double a = 3*c3;
+    double b = 2*c2 - 3*c3*2*grid[pidx];
+    double c = derivs[pidx] - 2*c2*grid[pidx] + 3*c3*grid[pidx]*grid[pidx];
+
+    // check for complex roots
+    double det = b*b - 4*a*c;
+    if (det < 0)
       continue;
 
+    double x1 = (-b + sqrt(det))/(2.0*a);
+    double x2 = (-b - sqrt(det))/(2.0*a);
+
 #ifdef SP_DEBUG
-    std::cout <<" f("<< x <<") = "<< this->evaluate(x);
+    std::cout <<" f("<< x1 <<") = "<< this->evaluate(x1);
+    std::cout <<" f("<< x2 <<") = "<< this->evaluate(x2);
 #endif
-    if (x >= grid.front() && x <= grid.back() && this->evaluateDeriv2(x) > 0.0)
-      extrema.push_back(x);
+    if (x1 >= grid.front() && x1 <= grid.back() && this->evaluateDeriv2(x1) > 0.0)
+      extrema.push_back(x1);
+    else if (x2 >= grid.front() && x2 <= grid.back() && this->evaluateDeriv2(x2) > 0.0)
+      extrema.push_back(x2);
   }
 
   if (!extrema.empty()) {
     double val = 1e100;
     for (double& it : extrema) {
       double val2 = this->evaluate(it);
+      std::cout << "x=" << it << ": " << val2 << std::endl;
       if (val2 < val) {
         x = it;
         val = val2;

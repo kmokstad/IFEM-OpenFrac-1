@@ -19,6 +19,7 @@
 #include "InitialConditionHandler.h"
 #include "FractureElasticityMonol.h"
 #include "DataExporter.h"
+#include "MultiPatchModelGenerator.h"
 #include <fstream>
 
 
@@ -284,6 +285,15 @@ public:
   }
 
 protected:
+  ModelGenerator* createModelGenerator(const TiXmlElement* geo) const
+  {
+  IFEM::cout <<"  Using multi-patch model generator" << std::endl;
+  if (Dim::dimension == 2)
+    return new MultiPatchModelGenerator2D(geo);
+  else
+    return new MultiPatchModelGenerator3D(geo);
+  }
+  
   //! \brief Returns the actual integrand.
   virtual Elasticity* getIntegrand()
   {

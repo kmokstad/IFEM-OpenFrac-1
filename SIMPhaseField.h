@@ -24,6 +24,7 @@
 #include "Utilities.h"
 #include "DataExporter.h"
 #include "IFEM.h"
+#include "SIMMultiPatchModelGen.h"
 #include "tinyxml.h"
 
 
@@ -31,11 +32,11 @@
   \brief Driver class for an Cahn-Hilliard phase-field simulator.
 */
 
-template<class Dim> class SIMPhaseField : public Dim
+template<class Dim> class SIMPhaseField : public SIMMultiPatchModelGen<Dim>
 {
 public:
   //! \brief Default constructor.
-  SIMPhaseField(Dim* gridOwner = nullptr) : Dim(1)
+  SIMPhaseField(Dim* gridOwner = nullptr) : SIMMultiPatchModelGen<Dim>(1)
   {
     Dim::myHeading = "Cahn-Hilliard solver";
     if (gridOwner)
@@ -160,8 +161,10 @@ public:
     if (!this->solveSystem(phasefield,0))
       return false;
 
-    if (tp.step == 1)
+    if (tp.step == 1) {
       static_cast<CahnHilliard*>(Dim::myProblem)->clearInitialCrack();
+      static_cast<CahnHilliard*>(Dim::myProblem)->enablePenaltyFormulation();
+    }
 
     return standalone ? this->postSolve(tp) : true;
   }

@@ -23,8 +23,8 @@
 
 CahnHilliard::CahnHilliard (unsigned short int n) : IntegrandBase(n),
   Gc(1.0), smearing(1.0), maxCrack(1.0e-3), stabk(0.0), scale2nd(4.0),
-  pgamma(-1.0), pthresh(0.0), initial_crack(nullptr), tensileEnergy(nullptr),
-  Lnorm(0)
+  pgamma(-1.0), pthresh(0.0), enablePen(false),
+  initial_crack(nullptr), tensileEnergy(nullptr), Lnorm(0)
 {
   primsol.resize(1);
 }
@@ -107,7 +107,7 @@ bool CahnHilliard::evalInt (LocalIntegral& elmInt, const FiniteElement& fe,
   }
 
   // Update history field
-  if (this->penaltyFormulation() && tensileEnergy)
+  if (enablePen && this->penaltyFormulation() && tensileEnergy)
     H = (*tensileEnergy)[fe.iGP];
   else if (tensileEnergy)
     H = std::max(H,(*tensileEnergy)[fe.iGP]);

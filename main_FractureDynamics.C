@@ -140,7 +140,7 @@ int runCombined (char* infile, const char* context)
 
   DataExporter* exporter = nullptr;
   if (elastoSim.opt.dumpHDF5(infile))
-    exporter = SIM::handleDataOutput(frac,solver,elastoSim.opt.hdf5,false,1,1);
+    exporter = SIM::handleDataOutput(frac,solver,elastoSim.opt.hdf5,false,elastoSim.getDumpInterval(),1);
 
   frac.setupDependencies();
 

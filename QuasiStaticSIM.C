@@ -16,9 +16,9 @@
 #include "SIMoutput.h"
 #include "TimeStep.h"
 #include "IFEM.h"
-#if SP_DEBUG > 1
+//#if SP_DEBUG > 1
 #include <iterator>
-#endif
+//#endif
 
 
 void QuasiStaticSIM::printProblem () const
@@ -66,9 +66,9 @@ bool QuasiStaticSIM::lineSearch (TimeStep& param)
 
   double curr = norm(1) + norm(6);
 
-#ifdef SP_DEBUG
+//#ifdef SP_DEBUG
   std::cout <<"\tLine search? curr: "<< curr <<" prev: "<< prev << std::endl;
-#endif
+//#endif
   if (param.iter < 2 || curr < prev)
     return true; // No line search needed in this iteration
 
@@ -100,10 +100,10 @@ bool QuasiStaticSIM::lineSearch (TimeStep& param)
       return false;
 
     values[i] = norm(1) + norm(6);
-    derivs[i] = residual.dot(linsol);
+    derivs[i] = -residual.dot(linsol);
   }
 
-#if SP_DEBUG > 1
+//#if SP_DEBUG > 1
   std::cout <<"\nParameters:\n";
   std::copy(params.begin(),params.end(),
             std::ostream_iterator<double>(std::cout," "));
@@ -113,7 +113,7 @@ bool QuasiStaticSIM::lineSearch (TimeStep& param)
   std::cout <<"\nDerivatives:\n";
   std::copy(derivs.begin(),derivs.end(),
             std::ostream_iterator<double>(std::cout," "));
-#endif
+//#endif
   HermiteInterpolator h(params,values,derivs);
   return h.findMinimum(alpha);
 }

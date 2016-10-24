@@ -93,6 +93,7 @@ public:
   double scaleSmearing(double s) { return smearing *= s; }
   //! \brief Returns whether or not to use penalty formulation.
   bool penaltyFormulation() const { return pgamma > 0.0; }
+  void enablePenaltyFormulation() { enablePen = true; }
 
 protected:
   double Gc;       //!< Fracture energy density
@@ -102,6 +103,7 @@ protected:
   double scale2nd; //!< Scaling factor in front of second order term
   double pgamma;   //!< Penalty factor. If positive, penalty formulation is used
   double pthresh;  //!< Threshold for penalty formulation
+  bool  enablePen; //!< Penalty enabled
 
 private:
   RealFunc*        initial_crack; //!< For generating initial history field

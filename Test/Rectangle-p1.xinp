@@ -3,7 +3,7 @@
 <simulation>
 
   <geometry Lx="0.1" Ly="0.04">
-    <refine type="uniform" patch="1" u="94" v="37"/>
+    <refine type="uniform" patch="1" u="100" v="40"/>
     <topologysets>
       <set name="Loaded" type="edge">
         <item patch="1">3 4</item>
@@ -13,11 +13,12 @@
 
   <cahnhilliard>
     <Gc>3.0</Gc>
-    <smearing>5.2e-4</smearing>
+    <smearing>1e-3</smearing>
     <initial_crack type="expression"> dX=x-0.05; dY=y-0.02;
       if(below(dX,0.0),abs(dY),sqrt(dX*dX+dY*dY))
     </initial_crack>
     <Lnorm>1</Lnorm>
+    <penalty_factor threshold="0.05">1e6</penalty_factor>
   </cahnhilliard>
 
   <elasticity>
@@ -33,7 +34,7 @@
 
   <newmarksolver rho_inf="0.5">
     <timestepping>
-      <step start="0.0" end="1.2e-4">4.95e-7</step>
+      <step start="0.0" end="8e-5">1e-7</step>
     </timestepping>
   </newmarksolver>
 
@@ -43,10 +44,10 @@
   </postprocessing>
 
   <adaptive>
-    <forward_steps>10</forward_steps>
-    <predict_steps>20</predict_steps>
+    <forward_steps>1</forward_steps>
+    <predict_steps>2</predict_steps>
     <nrefinements>2</nrefinements>
-    <min_frac>0.2</min_frac>
+    <min_frac>0.4</min_frac>
     <max_prediction>4</max_prediction>
   </adaptive>
 
