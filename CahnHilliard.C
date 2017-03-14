@@ -116,49 +116,52 @@ bool CahnHilliard::evalIntD (ElmMats& elm, const FiniteElement& fe) const
   // Store the tensile energy density in the history buffer
   historyField[fe.iGP] = (*tensileEnergy)[fe.iGP];
 
-  // Evaluate the previous phase field, if provided
+  // Evaluate the previous and current phase fields, if provided
   double C = elm.vec.back().empty() ? 1.0 : fe.N.dot(elm.vec.back());
   bool inCrack = C < pthresh;
+  C = elm.vec.front().empty() ? 1.0 : fe.N.dot(elm.vec.front());
+  if (C < 0.0) C = 0.0;
+  if (C > 1.0) C = 1.0;
 #if INT_DEBUG > 3
   std::cout <<"\nCahnHilliard::evalIntD("<< fe.iGP <<"): C = "<< C;
 #endif
+
+  Vector gradC; // Compute the phase field gradient gradC = dNdX^t*eC
+  if (elm.vec.front().empty())
+    gradC.resize(nsd);
+  else if (!fe.dNdX.multiply(elm.vec.front(),gradC,true))
+    return false;
 
   double GcOell = 0.5*Gc/smearing; // Note: ell = 2*smearing
   double scale = GcOell + 2.0*(1.0-stabk)*historyField[fe.iGP];
   if (inCrack) scale -= gammaInv; // Note: gammaInv is assumed negative here
   double s1JxW = scale*fe.detJxW;
   double s2JxW = scale2nd*0.5*Gc*smearing*fe.detJxW;
+  double s3JxW = (GcOell - scale*C)*fe.detJxW;
 #if INT_DEBUG > 3
   if (inCrack)
     std::cout <<"\n\tIn crack: scale "<< scale+gammaInv <<" --> "<< scale;
   std::cout << std::endl;
 #endif
 
+  // Integrate the residual force vector
+  Vector& R = elm.b.front();
+  R.add(fe.N,-s3JxW); // R -= N*s3JxW
+  gradC *= -s2JxW;
+  if (!fe.dNdX.multiply(gradC,R,false,true)) // R -= dNdX*gradC*s2JxW
+    return false;
+
   if (m_mode == SIM::STATIC)
   {
     Matrix& A = elm.A.front();
 
+    // Integrate the tangent matrix
     A.outer_product(fe.N,fe.N,true,s1JxW);             // A +=  N  * N^t  *s1JxW
     A.multiply(fe.dNdX,fe.dNdX,false,true,true,s2JxW); // A += dNdX*dNdX^t*s2JxW
-
-    double s3JxW = (scale - GcOell)*fe.detJxW;
-    elm.b.front().add(fe.N,s3JxW); // R += N*s3JxW
   }
-  else if (m_mode == SIM::INT_FORCES && !elm.vec.front().empty())
+  else if (m_mode == SIM::INT_FORCES)
   {
-    Vector& R = elm.b.front();
     double& E = elm.c.front();
-
-    // Evaluate the current phase field, and ensure it is within the [0,1] range
-    C = fe.N.dot(elm.vec.front());
-    if (C < 0.0)
-      C = 0.0;
-    else if (C > 1.0)
-      C = 1.0;
-
-    Vector gradC; // Evaluate the phase field gradient gradC = dNdX^t*eC
-    if (!fe.dNdX.multiply(elm.vec.front(),gradC,true))
-      return false;
 
     // Integrate the dissipated energy.
     // Note that the penalty term is also included here,
@@ -169,16 +172,8 @@ bool CahnHilliard::evalIntD (ElmMats& elm, const FiniteElement& fe) const
       E -= 0.5*gammaInv*C*C*fe.detJxW;
 
 #if INT_DEBUG > 3
-    std::cout <<"\tC = "<< C <<"  E = "<< E << std::endl;
+    std::cout <<"\tE = "<< E << std::endl;
 #endif
-
-    // Integrate the residual force vector
-    double s3JxW = (GcOell - scale*C)*fe.detJxW;
-
-    R.add(fe.N,s3JxW); // R += N*s3JxW
-
-    gradC *= s2JxW;
-    return fe.dNdX.multiply(gradC,R,false,true); // R += dNdX*gradC*s2JxW
   }
   else
   {

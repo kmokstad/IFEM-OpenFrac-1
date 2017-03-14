@@ -176,17 +176,18 @@ public:
     if (!this->assembleSystem(tp.time,phasefield))
       return false;
 
-    if (!this->solveSystem(phasefield.front(),
-                           standalone ? 0 : 1, nullptr, nullptr))
+    if (!this->solveSystem(incsol, standalone ? 0 : 1, nullptr, nullptr))
       return false;
 
     if (tp.step == 1)
       static_cast<CahnHilliard*>(Dim::myProblem)->clearInitialCrack();
 
-    // If we solve for d as the primary phase-field variable,
-    // transform it to c = 1-d here
+    // If we solve for Delta(d) as the primary phase-field variable,
+    // update the current phase field here: c += Delta(c) = -Delta(d)
     if (static_cast<CahnHilliard*>(Dim::myProblem)->useDformulation())
-      for (double& c : phasefield.front()) c = 1.0 - c;
+      phasefield.front().add(incsol,-1.0);
+    else // we are solving for c directly
+      phasefield.front() = incsol;
 
     return standalone ? this->postSolve(tp) : true;
   }
@@ -412,6 +413,7 @@ protected:
 
 private:
   Vectors phasefield; //!< Current (and previous) phase field solution
+  Vector  incsol;     //!< Incremental solution
   Matrix  projSol;    //!< Projected solution fields
   Matrix  eNorm;      //!< Element norm values
   Vector  norm;       //!< Global norm values
