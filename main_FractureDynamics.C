@@ -165,6 +165,11 @@ int runSimulator3 (const FDargs& args)
     typedef SIMFractureQstatic<ElSolver,PhaseSolver> Coupler;
     return runCombined<ElSolver,PhaseSolver,Coupler,Solver>(args.inpfile,contx);
   }
+  else if (args.integrator == 3 && args.coupling == 3)
+  {
+    typedef SIMFractureMiehe<ElSolver,PhaseSolver> Coupler;
+    return runCombined<ElSolver,PhaseSolver,Coupler,Solver>(args.inpfile,contx);
+  }
   else
   {
     typedef SIMFracture<ElSolver,PhaseSolver,Cpl> Coupler;
@@ -243,6 +248,7 @@ int runSimulator1 (const FDargs& args)
 {
   switch (args.coupling) {
   case 1:
+  case 3:
     return runSimulator2<Dim,Integrator,SIMCoupled>(args);
   case 2:
     return runSimulator2<Dim,Integrator,SIMCoupledSI>(args);
@@ -321,6 +327,8 @@ int main (int argc, char** argv)
       args.integrator = 2;
     else if (!strcmp(argv[i],"-qstatic"))
       args.integrator = 3;
+    else if (!strcmp(argv[i],"-Miehe"))
+      args.integrator = args.coupling = 3;
     else if (!strcmp(argv[i],"-HHT"))
       args.integrator = 4;
     else if (!strcmp(argv[i],"-oldHHT"))
