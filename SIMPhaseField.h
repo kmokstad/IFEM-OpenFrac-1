@@ -17,6 +17,7 @@
 #include "CahnHilliard.h"
 #ifdef HAS_LRSPLINE
 #include "ASMu2D.h"
+#include <LRSpline/LRSplineSurface.h>
 #endif
 #include "TimeStep.h"
 #include "Profiler.h"
@@ -349,16 +350,29 @@ public:
   //! \brief Transfers history variables at Gauss/control points to new mesh.
   //! \param[in] oldH History variables associated with Gauss- or control points
   //! \param[in] oldBasis The LR-spline basis \a oldH is referring to
-  bool transferHistory2D(const RealArray& oldH, LR::LRSplineSurface* oldBasis)
+  bool transferHistory2D(const RealArray& oldH, std::vector<LR::LRSplineSurface*>& oldBasis)
   {
-    const ASMu2D* pch = dynamic_cast<ASMu2D*>(this->getPatch(1));
-    if (!pch) return false;
-
+    bool result = true;
+    size_t ofs_old = 0;
+    size_t ofs_new = 0;
     RealArray& newH = static_cast<CahnHilliard*>(Dim::myProblem)->historyField;
-    if (projSol.empty())
-      return pch->transferGaussPtVars(oldBasis,oldH,newH,Dim::opt.nGauss[0]);
-    else
-      return pch->transferCntrlPtVars(oldBasis,oldH,newH,Dim::opt.nGauss[0]);
+    for (int idx = 0; idx < this->getNoPatches() && result; idx++) {
+      const ASMu2D* pch = dynamic_cast<ASMu2D*>(this->getPatch(idx+1));
+      if (!pch) return false;
+
+      size_t nPtPatch = oldBasis[idx]->nElements()*Dim::opt.nGauss[0]*Dim::opt.nGauss[0];
+      RealArray oldHp(oldH.begin()+ofs_old, oldH.begin()+ofs_old+nPtPatch);
+      RealArray newHp(pch->getNoNodes(1)*Dim::opt.nGauss[0]*Dim::opt.nGauss[0]);
+      if (projSol.empty())
+        result &= pch->transferGaussPtVars(oldBasis[idx],oldHp,newHp,Dim::opt.nGauss[0]);
+      else
+        result &= pch->transferCntrlPtVars(oldBasis[idx],oldHp,newHp,Dim::opt.nGauss[0]);
+      ofs_old += nPtPatch;
+      std::copy(newHp.begin(), newHp.end(), newH.begin()+ofs_new);
+      ofs_new += newHp.size();
+    }
+
+    return result;
   }
 #endif
 
