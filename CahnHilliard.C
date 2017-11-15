@@ -90,7 +90,11 @@ void CahnHilliard::printLog () const
 void CahnHilliard::setMode (SIM::SolutionMode mode)
 {
   m_mode = mode;
-  primsol.resize(mode < SIM::RHS_ONLY && gammaInv == 0.0 ? 0 : 2);
+  // LR cannot handle an additional empty entry
+  if (gammaInv == 0.0)
+    primsol.resize(mode < SIM::RHS_ONLY ? 0 : 2);
+  else
+    primsol.resize(mode < SIM::RHS_ONLY ? 0 : 1);
 }
 
 
@@ -246,10 +250,11 @@ bool CahnHilliard::evalInt (LocalIntegral& elmInt, const FiniteElement& fe,
 
     // Evaluate the current phase field, and ensure it is within the [0,1] range
     C = fe.N.dot(elmInt.vec.front());
-    if (C < 0.0)
-      C = 0.0;
-    else if (C > 1.0)
-      C = 1.0;
+    // we need to use the same C value as the equation gave
+//    if (C < 0.0)
+//      C = 0.0;
+//    else if (C > 1.0)
+//      C = 1.0;
 
     Vector gradC; // Compute the phase field gradient gradC = dNdX^t*eC
     if (!fe.dNdX.multiply(elmInt.vec.front(),gradC,true))
