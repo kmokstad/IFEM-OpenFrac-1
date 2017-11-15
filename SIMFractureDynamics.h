@@ -240,7 +240,8 @@ public:
     }
 
     size_t solsize = sols.size();
-    size_t sollen = sols.front().size();
+    // sanity for some case. cannot recall
+    size_t sollen = sols.empty() ? 0 : sols.front().size();
     if (!this->S1.refine(prm,sols) || !this->S2.refine(prm))
       return -2;
 
