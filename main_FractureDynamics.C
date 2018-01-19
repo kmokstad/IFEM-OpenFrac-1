@@ -20,6 +20,7 @@
 #include "SIMFractureQstatic.h"
 #ifdef IFEM_HAS_POROELASTIC
 #include "SIMPoroElasticity.h"
+#include "NewmarkPoroSIM.h"
 #endif
 #include "SIMCoupledSI.h"
 #include "SIMSolver.h"
@@ -331,7 +332,12 @@ int runSimulator (const FractureArgs& args)
   case 0:
     return runSimulator4<Dim,LinSIM>(args,"staticsolver");
   case 1:
-    return runSimulator1<Dim,NewmarkSIM>(args);
+#ifdef IFEM_HAS_POROELASTIC
+    if (args.poroEl)
+      return runSimulator1<Dim,NewmarkPoroSIM>(args);
+    else
+#endif
+      return runSimulator1<Dim,NewmarkSIM>(args);
   case 2:
     return runSimulator1<Dim,GenAlphaSIM>(args);
   case 3:
