@@ -50,6 +50,10 @@ public:
   virtual void setupDependencies()
   {
     this->S1.registerDependency(&this->S2,"phasefield",1);
+
+    if (this->S2.getHeading().find("Explicit") != std::string::npos)
+      this->S1.addMADOF();
+
     // The tensile energy is defined on integration points and not nodal points.
     // It is a global buffer array across all patches in the model.
     // Use an explicit call instead of normal couplings for this.
