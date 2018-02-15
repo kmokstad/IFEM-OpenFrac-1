@@ -273,6 +273,12 @@ public:
     return fel ? fel->getCrackPressure() != nullptr : false;
   }
 
+  //! \brief Add additional MADOF for explicit phase field
+  void addMADOF()
+  {
+    this->Dim::addMADOF(1, 1, false);
+  }
+
 protected:
   //! \brief Returns the actual integrand.
   virtual Elasticity* getIntegrand()
