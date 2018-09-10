@@ -382,8 +382,12 @@ int main (int argc, char** argv)
       ; // ignore the input file on the second pass
     else if (SIMoptions::ignoreOldOptions(argc,argv,i))
       ; // ignore the obsolete option
-    else if (!strcmp(argv[i],"-mixed"))
-      ASMmxBase::Type = ASMmxBase::FULL_CONT_RAISE_BASIS1;
+    else if (!strcmp(argv[i],"-mixed")) {
+      ASMmxBase::Type = ASMmxBase::REDUCED_CONT_RAISE_BASIS1;
+      if (i < argc-1 && argv[i+1][0] != '-')
+        if (strcmp(argv[++i],"full") == 0)
+          ASMmxBase::Type = ASMmxBase::FULL_CONT_RAISE_BASIS1;
+    }
     else if (!strcmp(argv[i],"-principal"))
       Elasticity::wantPrincipalStress = true;
     else if (!strncmp(argv[i],"-dbgEl",6) && i < argc-1)
