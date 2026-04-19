@@ -68,10 +68,10 @@ Number of unknowns    484
 		sol2 =  9.55385e-03  1.28525e-02  9.28952e-04  9.55385e-03  1.28525e-02  4.64476e-04  2.25365e-02  0.00000e+00  0.00000e+00  0.00000e+00
 
   Solving crack phase field at step=1 time=250
-  Primary solution summary: L2-norm      : 0.787995
-                            Max value    : 0.912324
-                            Min value    : -0.0130768
-                            Range        : 1.01308
+  L2-norm            : 0.787995
+  Max value          : 0.912324
+  Min value          : -0.0130768
+  Range              : 1.01308
   Dissipated energy:               eps_d : 2.51044
   Solving the elasto-dynamics problem...
   step=2  time=500
@@ -89,10 +89,10 @@ Number of unknowns    484
 		sol2 =  2.82200e-02  4.30930e-02  3.06150e-03  2.82200e-02  4.30930e-02  1.53075e-03  7.16545e-02  4.30949e-04  0.00000e+00  0.00000e+00
 
   Solving crack phase field at step=2 time=500
-  Primary solution summary: L2-norm      : 0.787995
-                            Max value    : 0.912324
-                            Min value    : -0.0130767
-                            Range        : 1.01308
+  L2-norm            : 0.787995
+  Max value          : 0.912324
+  Min value          : -0.0130767
+  Range              : 1.01308
   Dissipated energy:               eps_d : 2.51044
   Solving the elasto-dynamics problem...
   step=3  time=750
@@ -110,8 +110,8 @@ Number of unknowns    484
 		sol2 =  4.60374e-02  7.29163e-02  5.10230e-03  4.60374e-02  7.29163e-02  2.55115e-03  1.19523e-01  7.28295e-04  0.00000e+00  0.00000e+00
 
   Solving crack phase field at step=3 time=750
-  Primary solution summary: L2-norm      : 0.787995
-                            Max value    : 0.912324
-                            Min value    : -0.0130767
-                            Range        : 1.01308
+  L2-norm            : 0.787995
+  Max value          : 0.912324
+  Min value          : -0.0130767
+  Range              : 1.01308
   Dissipated energy:               eps_d : 2.51044

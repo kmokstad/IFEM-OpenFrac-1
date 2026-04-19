@@ -96,8 +96,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.00116572 4.96996e-06
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.0582174
   Solving crack phase field at step=1 time=1e-06
-  Primary solution summary: L2-norm      : 0.940816
-                            Max value    : 0.999068
+  L2-norm            : 0.940816
+  Max value          : 0.999068
   Dissipated energy:               eps_d : 0.0501864
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0264183
   Normalized L2-norm: |c^h|/V^0.5 : 0.934029
@@ -116,8 +116,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.00367373 4.29614e-05
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.0902768
   Solving crack phase field at step=2 time=2e-06
-  Primary solution summary: L2-norm      : 0.936106
-                            Max value    : 0.997728
+  L2-norm            : 0.936106
+  Max value          : 0.997728
   Dissipated energy:               eps_d : 0.0502431
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0262959
   Normalized L2-norm: |c^h|/V^0.5 : 0.9297
@@ -136,8 +136,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.00559512 0.000124446
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.111527
   Solving crack phase field at step=3 time=3e-06
-  Primary solution summary: L2-norm      : 0.931711
-                            Max value    : 0.995272
+  L2-norm            : 0.931711
+  Max value          : 0.995272
   Dissipated energy:               eps_d : 0.0503091
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0261691
   Normalized L2-norm: |c^h|/V^0.5 : 0.925217
@@ -156,8 +156,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.00782489 0.000272082
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.130802
   Solving crack phase field at step=4 time=4e-06
-  Primary solution summary: L2-norm      : 0.927454
-                            Max value    : 0.991632
+  L2-norm            : 0.927454
+  Max value          : 0.991632
   Dissipated energy:               eps_d : 0.0503772
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0260436
   Normalized L2-norm: |c^h|/V^0.5 : 0.920782
@@ -177,8 +177,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.0101843 0.000523577
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.147458
   Solving crack phase field at step=5 time=5e-06
-  Primary solution summary: L2-norm      : 0.923384
-                            Max value    : 0.986297
+  L2-norm            : 0.923384
+  Max value          : 0.986297
   Dissipated energy:               eps_d : 0.0504568
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0259245
   Normalized L2-norm: |c^h|/V^0.5 : 0.91657
@@ -198,8 +198,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.0145137 0.000848453
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.162379
   Solving crack phase field at step=6 time=6e-06
-  Primary solution summary: L2-norm      : 0.91956
-                            Max value    : 0.973165
+  L2-norm            : 0.91956
+  Max value          : 0.973165
   Dissipated energy:               eps_d : 0.0505896
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0258148
   Normalized L2-norm: |c^h|/V^0.5 : 0.91269
@@ -219,8 +219,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.027071 0.00115247
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.176561
   Solving crack phase field at step=7 time=7e-06
-  Primary solution summary: L2-norm      : 0.91496
-                            Max value    : 0.973119
+  L2-norm            : 0.91496
+  Max value          : 0.973119
   Dissipated energy:               eps_d : 0.0509527
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0256839
   Normalized L2-norm: |c^h|/V^0.5 : 0.908062
@@ -240,8 +240,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.0557282 0.00133775
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.18975
   Solving crack phase field at step=8 time=8e-06
-  Primary solution summary: L2-norm      : 0.909601
-                            Max value    : 0.973097
+  L2-norm            : 0.909601
+  Max value          : 0.973097
   Dissipated energy:               eps_d : 0.0517534
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0255306
   Normalized L2-norm: |c^h|/V^0.5 : 0.902642
@@ -261,8 +261,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.0986279 0.00138685
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.202497
   Solving crack phase field at step=9 time=9e-06
-  Primary solution summary: L2-norm      : 0.903615
-                            Max value    : 0.97305
+  L2-norm            : 0.903615
+  Max value          : 0.97305
   Dissipated energy:               eps_d : 0.0529476
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0253581
   Normalized L2-norm: |c^h|/V^0.5 : 0.896544
@@ -282,8 +282,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.143066 0.00138235
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.215011
   Solving crack phase field at step=10 time=1e-05
-  Primary solution summary: L2-norm      : 0.896794
-                            Max value    : 0.97296
+  L2-norm            : 0.896794
+  Max value          : 0.97296
   Dissipated energy:               eps_d : 0.0543446
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.02516
   Normalized L2-norm: |c^h|/V^0.5 : 0.889541
@@ -303,8 +303,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.184928 0.00139236
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.227266
   Solving crack phase field at step=11 time=1.1e-05
-  Primary solution summary: L2-norm      : 0.889654
-                            Max value    : 0.972809
+  L2-norm            : 0.889654
+  Max value          : 0.972809
   Dissipated energy:               eps_d : 0.0559299
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0249501
   Normalized L2-norm: |c^h|/V^0.5 : 0.882121
@@ -324,8 +324,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.233607 0.00136027
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.239186
   Solving crack phase field at step=12 time=1.2e-05
-  Primary solution summary: L2-norm      : 0.88312
-                            Max value    : 0.972708
+  L2-norm            : 0.88312
+  Max value          : 0.972708
   Dissipated energy:               eps_d : 0.057805
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0247564
   Normalized L2-norm: |c^h|/V^0.5 : 0.875272
@@ -345,8 +345,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.297724 0.00126376
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.2503
   Solving crack phase field at step=13 time=1.3e-05
-  Primary solution summary: L2-norm      : 0.877742
-                            Max value    : 0.972572
+  L2-norm            : 0.877742
+  Max value          : 0.972572
   Dissipated energy:               eps_d : 0.0600418
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0245945
   Normalized L2-norm: |c^h|/V^0.5 : 0.869549
@@ -366,8 +366,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.376224 0.00119069
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.260104
   Solving crack phase field at step=14 time=1.4e-05
-  Primary solution summary: L2-norm      : 0.873329
-                            Max value    : 0.972463
+  L2-norm            : 0.873329
+  Max value          : 0.972463
   Dissipated energy:               eps_d : 0.0625822
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0244622
   Normalized L2-norm: |c^h|/V^0.5 : 0.864871
@@ -387,8 +387,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.465011 0.00123666
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.268291
   Solving crack phase field at step=15 time=1.5e-05
-  Primary solution summary: L2-norm      : 0.869301
-                            Max value    : 0.97233
+  L2-norm            : 0.869301
+  Max value          : 0.97233
   Dissipated energy:               eps_d : 0.0652587
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0243426
   Normalized L2-norm: |c^h|/V^0.5 : 0.86064
@@ -408,8 +408,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.567666 0.00140625
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.274945
   Solving crack phase field at step=16 time=1.6e-05
-  Primary solution summary: L2-norm      : 0.865983
-                            Max value    : 0.972327
+  L2-norm            : 0.865983
+  Max value          : 0.972327
   Dissipated energy:               eps_d : 0.067975
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0242434
   Normalized L2-norm: |c^h|/V^0.5 : 0.857133
@@ -429,8 +429,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.692145 0.00163937
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.280694
   Solving crack phase field at step=17 time=1.7e-05
-  Primary solution summary: L2-norm      : 0.863292
-                            Max value    : 0.972323
+  L2-norm            : 0.863292
+  Max value          : 0.972323
   Dissipated energy:               eps_d : 0.0707234
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0241617
   Normalized L2-norm: |c^h|/V^0.5 : 0.854244
@@ -450,8 +450,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 0.843271 0.00179882
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.286372
   Solving crack phase field at step=18 time=1.8e-05
-  Primary solution summary: L2-norm      : 0.861196
-                            Max value    : 0.972321
+  L2-norm            : 0.861196
+  Max value          : 0.972321
   Dissipated energy:               eps_d : 0.07339
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0240961
   Normalized L2-norm: |c^h|/V^0.5 : 0.851925
@@ -471,8 +471,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 1.02216 0.00169502
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.292492
   Solving crack phase field at step=19 time=1.9e-05
-  Primary solution summary: L2-norm      : 0.859641
-                            Max value    : 0.972318
+  L2-norm            : 0.859641
+  Max value          : 0.972318
   Dissipated energy:               eps_d : 0.0758357
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0240458
   Normalized L2-norm: |c^h|/V^0.5 : 0.850148
@@ -492,8 +492,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 1.2275 0.00129342
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.29899
   Solving crack phase field at step=20 time=2e-05
-  Primary solution summary: L2-norm      : 0.858485
-                            Max value    : 0.972316
+  L2-norm            : 0.858485
+  Max value          : 0.972316
   Dissipated energy:               eps_d : 0.0779698
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0240077
   Normalized L2-norm: |c^h|/V^0.5 : 0.848799
@@ -513,8 +513,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 1.4554 0.000830674
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.305499
   Solving crack phase field at step=21 time=2.1e-05
-  Primary solution summary: L2-norm      : 0.857657
-                            Max value    : 0.972314
+  L2-norm            : 0.857657
+  Max value          : 0.972314
   Dissipated energy:               eps_d : 0.0797355
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0239798
   Normalized L2-norm: |c^h|/V^0.5 : 0.847814
@@ -534,8 +534,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 1.70239 0.000565718
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.311889
   Solving crack phase field at step=22 time=2.2e-05
-  Primary solution summary: L2-norm      : 0.857026
-                            Max value    : 0.972312
+  L2-norm            : 0.857026
+  Max value          : 0.972312
   Dissipated energy:               eps_d : 0.0812027
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0239584
   Normalized L2-norm: |c^h|/V^0.5 : 0.847057
@@ -555,8 +555,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 1.97013 0.000454279
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.318441
   Solving crack phase field at step=23 time=2.3e-05
-  Primary solution summary: L2-norm      : 0.856488
-                            Max value    : 0.972311
+  L2-norm            : 0.856488
+  Max value          : 0.972311
   Dissipated energy:               eps_d : 0.0825027
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.02394
   Normalized L2-norm: |c^h|/V^0.5 : 0.846408
@@ -576,8 +576,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 2.26804 0.000374949
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.325527
   Solving crack phase field at step=24 time=2.4e-05
-  Primary solution summary: L2-norm      : 0.855939
-                            Max value    : 0.972309
+  L2-norm            : 0.855939
+  Max value          : 0.972309
   Dissipated energy:               eps_d : 0.0838064
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0239212
   Normalized L2-norm: |c^h|/V^0.5 : 0.845743
@@ -597,8 +597,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 2.61274 0.000343424
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.333276
   Solving crack phase field at step=25 time=2.5e-05
-  Primary solution summary: L2-norm      : 0.855331
-                            Max value    : 0.972308
+  L2-norm            : 0.855331
+  Max value          : 0.972308
   Dissipated energy:               eps_d : 0.0852042
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0239004
   Normalized L2-norm: |c^h|/V^0.5 : 0.845008
@@ -618,8 +618,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 3.01971 0.00042816
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.341623
   Solving crack phase field at step=26 time=2.6e-05
-  Primary solution summary: L2-norm      : 0.854651
-                            Max value    : 0.972307
+  L2-norm            : 0.854651
+  Max value          : 0.972307
   Dissipated energy:               eps_d : 0.0867075
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0238773
   Normalized L2-norm: |c^h|/V^0.5 : 0.844191
@@ -639,8 +639,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 3.49095 0.000682689
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.350568
   Solving crack phase field at step=27 time=2.7e-05
-  Primary solution summary: L2-norm      : 0.853948
-                            Max value    : 0.972306
+  L2-norm            : 0.853948
+  Max value          : 0.972306
   Dissipated energy:               eps_d : 0.088225
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0238536
   Normalized L2-norm: |c^h|/V^0.5 : 0.843352
@@ -660,8 +660,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 4.01094 0.00109374
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.360217
   Solving crack phase field at step=28 time=2.8e-05
-  Primary solution summary: L2-norm      : 0.853317
-                            Max value    : 0.972306
+  L2-norm            : 0.853317
+  Max value          : 0.972306
   Dissipated energy:               eps_d : 0.0896254
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0238322
   Normalized L2-norm: |c^h|/V^0.5 : 0.842597
@@ -681,8 +681,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 4.56543 0.00142443
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.370576
   Solving crack phase field at step=29 time=2.9e-05
-  Primary solution summary: L2-norm      : 0.852731
-                            Max value    : 0.972305
+  L2-norm            : 0.852731
+  Max value          : 0.972305
   Dissipated energy:               eps_d : 0.0909182
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0238124
   Normalized L2-norm: |c^h|/V^0.5 : 0.841897
@@ -702,8 +702,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 5.16542 0.00150086
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.381488
   Solving crack phase field at step=30 time=3e-05
-  Primary solution summary: L2-norm      : 0.85214
-                            Max value    : 0.972304
+  L2-norm            : 0.85214
+  Max value          : 0.972304
   Dissipated energy:               eps_d : 0.0921776
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0237926
   Normalized L2-norm: |c^h|/V^0.5 : 0.841195
@@ -723,8 +723,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 5.84366 0.00134701
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.392752
   Solving crack phase field at step=31 time=3.1e-05
-  Primary solution summary: L2-norm      : 0.851515
-                            Max value    : 0.972304
+  L2-norm            : 0.851515
+  Max value          : 0.972304
   Dissipated energy:               eps_d : 0.0934854
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0237718
   Normalized L2-norm: |c^h|/V^0.5 : 0.840459
@@ -744,8 +744,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 6.6393 0.00115883
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.404231
   Solving crack phase field at step=32 time=3.2e-05
-  Primary solution summary: L2-norm      : 0.850831
-                            Max value    : 0.972303
+  L2-norm            : 0.850831
+  Max value          : 0.972303
   Dissipated energy:               eps_d : 0.0948991
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0237492
   Normalized L2-norm: |c^h|/V^0.5 : 0.83966
@@ -765,8 +765,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 7.58735 0.00105656
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.415854
   Solving crack phase field at step=33 time=3.3e-05
-  Primary solution summary: L2-norm      : 0.850038
-                            Max value    : 0.972303
+  L2-norm            : 0.850038
+  Max value          : 0.972303
   Dissipated energy:               eps_d : 0.0964496
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0237235
   Normalized L2-norm: |c^h|/V^0.5 : 0.838754
@@ -786,8 +786,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 8.71175 0.000995969
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.427602
   Solving crack phase field at step=34 time=3.4e-05
-  Primary solution summary: L2-norm      : 0.849208
-                            Max value    : 0.972302
+  L2-norm            : 0.849208
+  Max value          : 0.972302
   Dissipated energy:               eps_d : 0.0980598
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.023697
   Normalized L2-norm: |c^h|/V^0.5 : 0.837815
@@ -807,8 +807,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 10.0218 0.000927656
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.439512
   Solving crack phase field at step=35 time=3.5e-05
-  Primary solution summary: L2-norm      : 0.848349
-                            Max value    : 0.972302
+  L2-norm            : 0.848349
+  Max value          : 0.972302
   Dissipated energy:               eps_d : 0.0996851
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0236699
   Normalized L2-norm: |c^h|/V^0.5 : 0.836856
@@ -828,8 +828,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 11.5027 0.000836689
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.451709
   Solving crack phase field at step=36 time=3.6e-05
-  Primary solution summary: L2-norm      : 0.847446
-                            Max value    : 0.972301
+  L2-norm            : 0.847446
+  Max value          : 0.972301
   Dissipated energy:               eps_d : 0.10131
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0236419
   Normalized L2-norm: |c^h|/V^0.5 : 0.835867
@@ -849,8 +849,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 13.0971 0.000742803
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.464418
   Solving crack phase field at step=37 time=3.7e-05
-  Primary solution summary: L2-norm      : 0.846434
-                            Max value    : 0.972301
+  L2-norm            : 0.846434
+  Max value          : 0.972301
   Dissipated energy:               eps_d : 0.102965
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0236117
   Normalized L2-norm: |c^h|/V^0.5 : 0.834801
@@ -870,8 +870,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 14.7617 0.000638539
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.477889
   Solving crack phase field at step=38 time=3.8e-05
-  Primary solution summary: L2-norm      : 0.845323
-                            Max value    : 0.972301
+  L2-norm            : 0.845323
+  Max value          : 0.972301
   Dissipated energy:               eps_d : 0.104652
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0235799
   Normalized L2-norm: |c^h|/V^0.5 : 0.833675
@@ -891,8 +891,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 16.5067 0.000608618
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.492244
   Solving crack phase field at step=39 time=3.9e-05
-  Primary solution summary: L2-norm      : 0.844205
-                            Max value    : 0.9723
+  L2-norm            : 0.844205
+  Max value          : 0.9723
   Dissipated energy:               eps_d : 0.106327
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0235483
   Normalized L2-norm: |c^h|/V^0.5 : 0.832559
@@ -912,8 +912,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 18.3603 0.000649037
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.507409
   Solving crack phase field at step=40 time=4e-05
-  Primary solution summary: L2-norm      : 0.843203
-                            Max value    : 0.9723
+  L2-norm            : 0.843203
+  Max value          : 0.9723
   Dissipated energy:               eps_d : 0.107903
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0235204
   Normalized L2-norm: |c^h|/V^0.5 : 0.83157
@@ -933,8 +933,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 20.3634 0.000689594
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.523164
   Solving crack phase field at step=41 time=4.1e-05
-  Primary solution summary: L2-norm      : 0.842348
-                            Max value    : 0.9723
+  L2-norm            : 0.842348
+  Max value          : 0.9723
   Dissipated energy:               eps_d : 0.109337
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0234967
   Normalized L2-norm: |c^h|/V^0.5 : 0.830733
@@ -954,8 +954,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 22.5703 0.000705389
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.539198
   Solving crack phase field at step=42 time=4.2e-05
-  Primary solution summary: L2-norm      : 0.841616
-                            Max value    : 0.9723
+  L2-norm            : 0.841616
+  Max value          : 0.9723
   Dissipated energy:               eps_d : 0.110629
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0234766
   Normalized L2-norm: |c^h|/V^0.5 : 0.830024
@@ -975,8 +975,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 25.0374 0.000721346
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.555175
   Solving crack phase field at step=43 time=4.3e-05
-  Primary solution summary: L2-norm      : 0.840886
-                            Max value    : 0.9723
+  L2-norm            : 0.840886
+  Max value          : 0.9723
   Dissipated energy:               eps_d : 0.111859
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0234574
   Normalized L2-norm: |c^h|/V^0.5 : 0.829345
@@ -996,8 +996,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 27.8295 0.000589983
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.570865
   Solving crack phase field at step=44 time=4.4e-05
-  Primary solution summary: L2-norm      : 0.840024
-                            Max value    : 0.971941
+  L2-norm            : 0.840024
+  Max value          : 0.971941
   Dissipated energy:               eps_d : 0.113111
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0234359
   Normalized L2-norm: |c^h|/V^0.5 : 0.828584
@@ -1017,8 +1017,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 31.0108 0.000477665
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.586263
   Solving crack phase field at step=45 time=4.5e-05
-  Primary solution summary: L2-norm      : 0.839249
-                            Max value    : 0.97194
+  L2-norm            : 0.839249
+  Max value          : 0.97194
   Dissipated energy:               eps_d : 0.114409
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0234169
   Normalized L2-norm: |c^h|/V^0.5 : 0.827913
@@ -1038,8 +1038,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 34.62 0.00040002
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.60157
   Solving crack phase field at step=46 time=4.6e-05
-  Primary solution summary: L2-norm      : 0.838515
-                            Max value    : 0.97194
+  L2-norm            : 0.838515
+  Max value          : 0.97194
   Dissipated energy:               eps_d : 0.115747
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0233993
   Normalized L2-norm: |c^h|/V^0.5 : 0.827289
@@ -1059,8 +1059,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 38.6628 0.000311994
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.617032
   Solving crack phase field at step=47 time=4.7e-05
-  Primary solution summary: L2-norm      : 0.837845
-                            Max value    : 0.97194
+  L2-norm            : 0.837845
+  Max value          : 0.97194
   Dissipated energy:               eps_d : 0.117056
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0233832
   Normalized L2-norm: |c^h|/V^0.5 : 0.826722
@@ -1080,8 +1080,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 43.1054 0.000298256
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.632825
   Solving crack phase field at step=48 time=4.8e-05
-  Primary solution summary: L2-norm      : 0.837295
-                            Max value    : 0.97194
+  L2-norm            : 0.837295
+  Max value          : 0.97194
   Dissipated energy:               eps_d : 0.11824
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0233699
   Normalized L2-norm: |c^h|/V^0.5 : 0.826251
@@ -1101,8 +1101,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 47.8752 0.000324526
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.64905
   Solving crack phase field at step=49 time=4.9e-05
-  Primary solution summary: L2-norm      : 0.836875
-                            Max value    : 0.97194
+  L2-norm            : 0.836875
+  Max value          : 0.97194
   Dissipated energy:               eps_d : 0.119244
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0233595
   Normalized L2-norm: |c^h|/V^0.5 : 0.825883
@@ -1122,8 +1122,8 @@ Number of unknowns    231
   Tensile & compressive energies         : 52.8748 0.000287044
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.665737
   Solving crack phase field at step=50 time=5e-05
-  Primary solution summary: L2-norm      : 0.836569
-                            Max value    : 0.97194
+  L2-norm            : 0.836569
+  Max value          : 0.97194
   Dissipated energy:               eps_d : 0.120054
   L2-norm: |c^h| = (c^h,c^h)^0.5  : 0.0233516
   Normalized L2-norm: |c^h|/V^0.5 : 0.825605

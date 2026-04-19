@@ -89,9 +89,9 @@ Number of unknowns    40401
                             Max X-component : 1.80544e-05
                             Max Y-component : 0.000140278
   Total reaction forces:          Sum(R) : 0 0
-  Primary solution summary: L2-norm      : 0.998975
-                            Max value    : 1
-                            Min value    : -0.177113
-                            Range        : 1.17711
+  L2-norm            : 0.998975
+  Max value          : 1
+  Min value          : -0.177113
+  Range              : 1.17711
   Dissipated energy:               eps_d : 0.604389
   Time integration completed.

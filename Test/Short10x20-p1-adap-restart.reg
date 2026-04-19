@@ -113,10 +113,10 @@ Number of unknowns    330
   Tensile & compressive energies         : 13.3075 0.00187632
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.393992
   Solving crack phase field at step=76 time=3.8e-05
-  Primary solution summary: L2-norm      : 0.83704
-                            Max value    : 0.987356
-                            Min value    : -0.00770191
-                            Range        : 1.0077
+  L2-norm            : 0.83704
+  Max value          : 0.987356
+  Min value          : -0.00770191
+  Range              : 1.0077
   Dissipated energy:               eps_d : 0.0954224
   Solving the elasto-dynamics problem...
   step=77  time=3.85e-05
@@ -134,10 +134,10 @@ Number of unknowns    330
   Tensile & compressive energies         : 14.0909 0.0018477
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.401259
   Solving crack phase field at step=77 time=3.85e-05
-  Primary solution summary: L2-norm      : 0.835702
-                            Max value    : 0.987356
-                            Min value    : -0.00708586
-                            Range        : 1.00709
+  L2-norm            : 0.835702
+  Max value          : 0.987356
+  Min value          : -0.00708586
+  Range              : 1.00709
   Dissipated energy:               eps_d : 0.096935
   >>> Paused for mesh refinement at time=3.85e-05
   Lowest element:      ...    |c| = 0.000341245
@@ -161,10 +161,10 @@ Number of unknowns    330
   Tensile & compressive energies         : 14.9055 0.00185419
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.40837
   Solving crack phase field at step=78 time=3.9e-05
-  Primary solution summary: L2-norm      : 0.83434
-                            Max value    : 0.987356
-                            Min value    : -0.00656938
-                            Range        : 1.00657
+  L2-norm            : 0.83434
+  Max value          : 0.987356
+  Min value          : -0.00656938
+  Range              : 1.00657
   Dissipated energy:               eps_d : 0.0985404
   Solving the elasto-dynamics problem...
   step=79  time=3.95e-05
@@ -182,10 +182,10 @@ Number of unknowns    330
   Tensile & compressive energies         : 15.7617 0.00188281
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.415339
   Solving crack phase field at step=79 time=3.95e-05
-  Primary solution summary: L2-norm      : 0.832971
-                            Max value    : 0.987356
-                            Min value    : -0.00611408
-                            Range        : 1.00611
+  L2-norm            : 0.832971
+  Max value          : 0.987356
+  Min value          : -0.00611408
+  Range              : 1.00611
   Dissipated energy:               eps_d : 0.100062
   >>> Paused for mesh refinement at time=3.95e-05
   Lowest element:      ...    |c| = 0.000303939
@@ -209,9 +209,9 @@ Number of unknowns    330
   Tensile & compressive energies         : 16.6735 0.00171962
   External energy: ((f,u^h)+(t,u^h))^0.5 : 0.422197
   Solving crack phase field at step=80 time=4e-05
-  Primary solution summary: L2-norm      : 0.831624
-                            Max value    : 0.987355
-                            Min value    : -0.00570466
-                            Range        : 1.0057
+  L2-norm            : 0.831624
+  Max value          : 0.987355
+  Min value          : -0.00570466
+  Range              : 1.0057
   Dissipated energy:               eps_d : 0.10161
   Time integration completed.

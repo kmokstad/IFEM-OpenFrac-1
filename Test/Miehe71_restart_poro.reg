@@ -135,10 +135,10 @@ Number of unknowns    441
   Total reaction forces:          Sum(R) : -90.79 0
   displacement\*reactions:          (R,u) : -1362.92
   Solving crack phase field at step=12 time=30
-  Primary solution summary: L2-norm      : 0.0171947
-                            Max value    : 0.0274425
-                            Min value    : -0.00416573
-                            Range        : 1.00417
+  L2-norm            : 0.0171947
+  Max value          : 0.0274425
+  Min value          : -0.00416573
+  Range              : 1.00417
   Dissipated energy:               eps_d : 60.5099
   L1-norm: |c^h| = (|c^h|)        : 0.402407
   Normalized L1-norm: |c^h|/V     : 0.0160963
@@ -153,10 +153,10 @@ Number of unknowns    441
   Total reaction forces:          Sum(R) : -328.756 0
   displacement\*reactions:          (R,u) : -991.373
   Solving crack phase field at step=13 time=40
-  Primary solution summary: L2-norm      : 0.0153291
-                            Max value    : 0.0251258
-                            Min value    : -0.00369284
-                            Range        : 1.00369
+  L2-norm            : 0.0153291
+  Max value          : 0.0251258
+  Min value          : -0.00369284
+  Range              : 1.00369
   Dissipated energy:               eps_d : 60.7202
   L1-norm: |c^h| = (|c^h|)        : 0.359453
   Normalized L1-norm: |c^h|/V     : 0.0143781
@@ -171,10 +171,10 @@ Number of unknowns    441
   Total reaction forces:          Sum(R) : 10.6443 0
   displacement\*reactions:          (R,u) : -1170.33
   Solving crack phase field at step=14 time=50
-  Primary solution summary: L2-norm      : 0.0153291
-                            Max value    : 0.0251258
-                            Min value    : -0.00369284
-                            Range        : 1.00369
+  L2-norm            : 0.0153291
+  Max value          : 0.0251258
+  Min value          : -0.00369284
+  Range              : 1.00369
   Dissipated energy:               eps_d : 60.7202
   L1-norm: |c^h| = (|c^h|)        : 0.359453
   Normalized L1-norm: |c^h|/V     : 0.0143781

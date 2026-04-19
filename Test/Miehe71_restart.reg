@@ -120,10 +120,10 @@ Number of unknowns    441
   Tensile & compressive energies         : 15434.5
   External energy: ((f,u^h)+(t,u^h))^0.5 : -7.38426
   Solving crack phase field at step=12 time=30
-  Primary solution summary: L2-norm      : 0.709388
-                            Max value    : 0.79706
-                            Min value    : -0.000159
-                            Range        : 1.00016
+  L2-norm            : 0.709388
+  Max value          : 0.79706
+  Min value          : -0.000159
+  Range              : 1.00016
   Dissipated energy:               eps_d : 13.7125
   L1-norm: |c^h| = (|c^h|)        : 16.1751
   Normalized L1-norm: |c^h|/V     : 0.647003
@@ -138,10 +138,10 @@ Number of unknowns    441
   Tensile & compressive energies         : 15434.5
   External energy: ((f,u^h)+(t,u^h))^0.5 : -7.38426
   Solving crack phase field at step=13 time=40
-  Primary solution summary: L2-norm      : 0.709388
-                            Max value    : 0.79706
-                            Min value    : -0.000159
-                            Range        : 1.00016
+  L2-norm            : 0.709388
+  Max value          : 0.79706
+  Min value          : -0.000159
+  Range              : 1.00016
   Dissipated energy:               eps_d : 13.7125
   L1-norm: |c^h| = (|c^h|)        : 16.1751
   Normalized L1-norm: |c^h|/V     : 0.647003
@@ -156,10 +156,10 @@ Number of unknowns    441
   Tensile & compressive energies         : 15434.5
   External energy: ((f,u^h)+(t,u^h))^0.5 : -7.38426
   Solving crack phase field at step=14 time=50
-  Primary solution summary: L2-norm      : 0.709388
-                            Max value    : 0.79706
-                            Min value    : -0.000159
-                            Range        : 1.00016
+  L2-norm            : 0.709388
+  Max value          : 0.79706
+  Min value          : -0.000159
+  Range              : 1.00016
   Dissipated energy:               eps_d : 13.7125
   L1-norm: |c^h| = (|c^h|)        : 16.1751
   Normalized L1-norm: |c^h|/V     : 0.647003
