@@ -174,7 +174,7 @@ bool SIMPhaseField<Dim>::saveStep (const TimeStep& tp, int& nBlock)
         eNorm(4,i) = eNorm(4,i)*eNorm(4,i);
 
     // Write element norms to VTF-file
-    if (!this->writeGlvN(eNorm,vtfStep,nBlock,{},210))
+    if (!this->writeGlvN(eNorm,vtfStep,nBlock,210))
       return false;
 
     if (!this->writeGlvStep(vtfStep,tp.time.t))
