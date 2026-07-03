@@ -331,7 +331,7 @@ bool FractureElasticityVoigt::evalInt (LocalIntegral& elmInt,
   if (eS)
   {
     // Integrate the load vector due to gravitation and other body forces
-    this->formBodyForce(elMat.b[eS-1],elMat.c,fe.N,X,fe.detJxW);
+    this->formBodyForce(elMat.b[eS-1],elMat.c,fe,X);
     // Integrate the load vector due to internal crack pressure
     if (!this->formCrackForce(elMat.b[eS-1],elMat.vec,fe,X))
       return false;
@@ -438,7 +438,7 @@ bool FractureElasticNorm::evalInt (LocalIntegral& elmInt,
   if (p.haveLoads())
   {
     // Evaluate the body load
-    Vec3 f = p.getBodyforce(X);
+    Vec3 f = p.getBodyforce(X,fe.age);
     // Evaluate the displacement field
     Vec3 u = p.evalSol(pnorm.vec.front(),fe.N);
     // Integrate the external energy (f,u^h)
