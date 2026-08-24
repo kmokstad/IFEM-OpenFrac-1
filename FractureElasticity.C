@@ -415,7 +415,8 @@ bool FractureElasticity::evalInt (LocalIntegral& elmInt,
   if (eKm || eKg || iS || m_mode >= SIM::RECOVERY)
   {
     // Evaluate the symmetric strain tensor if displacements are available
-    if (!this->kinematics(elMat.vec.front(),fe.N,fe.dNdX,0.0,Bmat,eps,eps))
+    if (!this->kinematics(elMat.vec.front(),fe.iGP,fe.N,fe.dNdX,0.0,eps,
+                          &Bmat,&eps))
       return false;
     else if (!eps.isZero(1.0e-16))
     {
@@ -580,9 +581,8 @@ bool FractureElasticity::evalSol (Vector& s, const Vectors& eV,
   }
 
   // Evaluate the symmetric strain tensor, eps
-  Matrix Bmat;
   SymmTensor eps(nsd);
-  if (!this->kinematics(eV.front(),fe.N,fe.dNdX,0.0,Bmat,eps,eps))
+  if (!this->kinematics(eV.front(),fe.iGP,fe.N,fe.dNdX,0.0,eps,nullptr,&eps))
     return false;
   else if (!eps.isZero(1.0e-16))
     for (unsigned short int i = 1; i <= nsd; i++)

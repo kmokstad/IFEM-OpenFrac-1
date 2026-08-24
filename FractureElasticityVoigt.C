@@ -241,7 +241,8 @@ bool FractureElasticityVoigt::evalInt (LocalIntegral& elmInt,
   if (eKm || eKg || iS || m_mode >= SIM::RECOVERY)
   {
     // Evaluate the symmetric strain tensor if displacements are available
-    if (!this->kinematics(elMat.vec.front(),fe.N,fe.dNdX,0.0,Bmat,eps,eps))
+    if (!this->kinematics(elMat.vec.front(),fe.iGP,fe.N,fe.dNdX,0.0,
+                          eps,&Bmat,&eps))
       return false;
     else if (!eps.isZero(1.0e-16))
       lHaveStrains = true;
@@ -394,7 +395,8 @@ bool FractureElasticNorm::evalInt (LocalIntegral& elmInt,
   // Evaluate the symmetric strain tensor, eps
   Matrix Bmat;
   SymmTensor eps(p.getNoSpaceDim());
-  if (!p.kinematics(elmInt.vec.front(),fe.N,fe.dNdX,0.0,Bmat,eps,eps))
+  if (!p.kinematics(elmInt.vec.front(),fe.iGP,fe.N,fe.dNdX,0.0,
+                    eps,&Bmat,&eps))
     return false;
   else if (!eps.isZero(1.0e-16))
     // Scale the shear strain components by 0.5 to convert from engineering
